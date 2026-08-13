@@ -10,13 +10,13 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Tell Susan Wakarindi what's slowing you down and book a free 30-minute discovery call. Remote support worldwide, based in Nairobi (UTC+3).",
+          "Tell Susan Wakarindi what's slowing your operations down and book a free 30-minute discovery call. Remote support worldwide, based in Nairobi (UTC+3).",
       },
       { property: "og:title", content: "Contact Susan Wakarindi" },
       {
         property: "og:description",
         content:
-          "Book a free 30-minute discovery call for virtual assistance and operations support.",
+          "Book a free 30-minute discovery call for executive support, operations systems and AI-powered workflows.",
       },
     ],
   }),
@@ -28,21 +28,25 @@ function Contact() {
   const [form, setForm] = useState({ name: "", email: "", need: "", message: "" });
 
   const field =
-    "mt-2 w-full rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none focus:border-primary";
+    "mt-2 w-full rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none focus:border-[var(--gold)]";
 
   return (
     <SiteLayout>
       <section className="grain">
         <div className="mx-auto max-w-6xl px-6 pb-16 pt-20">
           <p className="eyebrow">Contact</p>
-          <h1 className="mt-6 max-w-3xl text-4xl leading-[1.08] sm:text-5xl">
-            Let's find the 10 hours hiding in your week.
+          <h1 className="mt-6 max-w-3xl text-4xl leading-[1.1] sm:text-5xl">
+            Let's find the hours hiding in your week.
           </h1>
+          <p className="accent-serif mt-5 text-xl text-[var(--navy)]">
+            Work Smarter. Operate Better. Grow Further.
+          </p>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-12 px-6 py-10 md:grid-cols-[1.3fr_1fr]">
+      <section className="mx-auto grid max-w-6xl gap-12 px-6 py-14 md:grid-cols-[1.3fr_1fr]">
         <div className="rounded-3xl border border-border bg-card p-8 md:p-10">
+
           {sent ? (
             <div>
               <h2 className="text-2xl">Thank you, {form.name || "friend"}.</h2>
