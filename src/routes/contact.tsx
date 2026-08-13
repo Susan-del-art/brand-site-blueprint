@@ -10,13 +10,13 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Tell Susan Wakarindi what's slowing you down and book a free 30-minute discovery call. Remote support worldwide, based in Nairobi (UTC+3).",
+          "Tell Susan Wakarindi what's slowing your operations down and book a free 30-minute discovery call. Remote support worldwide, based in Nairobi (UTC+3).",
       },
       { property: "og:title", content: "Contact Susan Wakarindi" },
       {
         property: "og:description",
         content:
-          "Book a free 30-minute discovery call for virtual assistance and operations support.",
+          "Book a free 30-minute discovery call for executive support, operations systems and AI-powered workflows.",
       },
     ],
   }),
@@ -28,21 +28,25 @@ function Contact() {
   const [form, setForm] = useState({ name: "", email: "", need: "", message: "" });
 
   const field =
-    "mt-2 w-full rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none focus:border-primary";
+    "mt-2 w-full rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none focus:border-[var(--gold)]";
 
   return (
     <SiteLayout>
       <section className="grain">
         <div className="mx-auto max-w-6xl px-6 pb-16 pt-20">
           <p className="eyebrow">Contact</p>
-          <h1 className="mt-6 max-w-3xl text-4xl leading-[1.08] sm:text-5xl">
-            Let's find the 10 hours hiding in your week.
+          <h1 className="mt-6 max-w-3xl text-4xl leading-[1.1] sm:text-5xl">
+            Let's find the hours hiding in your week.
           </h1>
+          <p className="accent-serif mt-5 text-xl text-[var(--navy)]">
+            Work Smarter. Operate Better. Grow Further.
+          </p>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-12 px-6 py-10 md:grid-cols-[1.3fr_1fr]">
+      <section className="mx-auto grid max-w-6xl gap-12 px-6 py-14 md:grid-cols-[1.3fr_1fr]">
         <div className="rounded-3xl border border-border bg-card p-8 md:p-10">
+
           {sent ? (
             <div>
               <h2 className="text-2xl">Thank you, {form.name || "friend"}.</h2>
@@ -87,10 +91,11 @@ function Contact() {
                   onChange={(e) => setForm({ ...form, need: e.target.value })}
                 >
                   <option value="">Choose one</option>
-                  <option>Inbox &amp; calendar support</option>
-                  <option>Client &amp; project operations</option>
+                  <option>Executive support (inbox, calendar, travel)</option>
+                  <option>Operations, SOPs &amp; project management</option>
+                  <option>AI &amp; automation</option>
+                  <option>Marketing &amp; personal branding support</option>
                   <option>Back office &amp; bookkeeping</option>
-                  <option>Content &amp; community admin</option>
                   <option>Not sure yet</option>
                 </select>
               </label>
@@ -105,7 +110,7 @@ function Contact() {
               </label>
               <button
                 type="submit"
-                className="mt-8 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-90"
+                className="mt-8 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-[var(--gold)] hover:text-[var(--navy)]"
               >
                 Send message
               </button>
@@ -115,20 +120,21 @@ function Contact() {
 
         <aside className="space-y-6 text-sm text-muted-foreground">
           <p className="flex items-start gap-3">
-            <Mail className="mt-0.5 size-4 text-primary" />
-            <a className="hover:text-foreground" href="mailto:hello@susanwakarindi.com">
+            <Mail className="mt-0.5 size-4 text-[var(--gold)]" />
+            <a className="hover:text-primary" href="mailto:hello@susanwakarindi.com">
               hello@susanwakarindi.com
             </a>
           </p>
           <p className="flex items-start gap-3">
-            <MapPin className="mt-0.5 size-4 text-primary" />
+            <MapPin className="mt-0.5 size-4 text-[var(--gold)]" />
             Nairobi, Kenya — working with clients worldwide
           </p>
           <p className="flex items-start gap-3">
-            <Clock className="mt-0.5 size-4 text-primary" />
+            <Clock className="mt-0.5 size-4 text-[var(--gold)]" />
             Mon–Fri, 8am–5pm EAT (UTC+3). Replies within one business day.
           </p>
         </aside>
+
       </section>
     </SiteLayout>
   );

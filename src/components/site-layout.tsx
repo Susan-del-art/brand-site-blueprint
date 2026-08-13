@@ -15,10 +15,15 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur">
+      <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link to="/" className="font-display text-lg tracking-tight">
-            Susan <span className="text-primary">Wakarindi</span>
+          <Link to="/" className="leading-tight">
+            <span className="font-display text-lg font-semibold tracking-tight text-primary">
+              Susan Wakarindi
+            </span>
+            <span className="hidden text-[0.62rem] uppercase tracking-[0.18em] text-muted-foreground sm:block">
+              Executive VA · Operations · Marketing · AI Systems
+            </span>
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex">
@@ -26,7 +31,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
               <Link
                 key={item.to}
                 to={item.to}
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground [&.active]:text-foreground"
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary [&.active]:text-primary"
                 activeOptions={{ exact: item.to === "/" }}
               >
                 {item.label}
@@ -34,14 +39,14 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             ))}
             <Link
               to="/contact"
-              className="rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+              className="rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-[var(--gold)] hover:text-[var(--navy)]"
             >
               Book a call
             </Link>
           </nav>
 
           <button
-            className="md:hidden"
+            className="text-primary md:hidden"
             aria-label="Toggle menu"
             onClick={() => setOpen((v) => !v)}
           >
@@ -50,13 +55,13 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         </div>
 
         {open && (
-          <nav className="border-t border-border/70 px-6 py-4 md:hidden">
+          <nav className="border-t border-border px-6 py-4 md:hidden">
             {nav.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
                 onClick={() => setOpen(false)}
-                className="block py-2 text-sm text-muted-foreground hover:text-foreground [&.active]:text-foreground"
+                className="block py-2 text-sm text-muted-foreground hover:text-primary [&.active]:text-primary"
                 activeOptions={{ exact: item.to === "/" }}
               >
                 {item.label}
@@ -68,18 +73,24 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 
       <main>{children}</main>
 
-      <footer className="mt-24 border-t border-border/70">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-12 sm:flex-row sm:items-end sm:justify-between">
+      <footer className="mt-24 bg-primary text-[var(--beige)]">
+        <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-14 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="font-display text-2xl">Let's take it off your plate.</p>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Virtual assistance &amp; operations support — remote, worldwide (EAT / UTC+3).
+            <p className="font-display text-2xl font-semibold text-[var(--beige)]">
+              Don't just work harder. Build better systems.
+            </p>
+            <p className="mt-3 max-w-md text-sm text-[var(--beige)]/75">
+              Executive support, operations, marketing coordination and AI-powered systems
+              for founders and growing businesses — remote, worldwide (EAT / UTC+3).
+            </p>
+            <p className="accent-serif mt-4 text-[var(--gold)]">
+              Work Smarter. Operate Better. Grow Further.
             </p>
           </div>
-          <div className="text-sm text-muted-foreground">
+          <div className="text-sm text-[var(--beige)]/75">
             <a
               href="mailto:hello@susanwakarindi.com"
-              className="block text-foreground transition-colors hover:text-primary"
+              className="block font-medium text-[var(--gold)] transition-opacity hover:opacity-80"
             >
               hello@susanwakarindi.com
             </a>

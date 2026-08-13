@@ -5,17 +5,20 @@ import { Check } from "lucide-react";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services & Packages — Susan Wakarindi, Virtual Assistant" },
+      { title: "Services & Packages — Susan Wakarindi, Executive VA" },
       {
         name: "description",
         content:
-          "Executive admin, inbox and calendar management, client onboarding, bookkeeping support and operations systems — monthly retainers and project sprints.",
+          "Executive support, operations and SOPs, AI and automation, marketing coordination and back-office support — monthly retainers and focused systems sprints.",
       },
-      { property: "og:title", content: "Virtual Assistant Services — Susan Wakarindi" },
+      {
+        property: "og:title",
+        content: "Executive VA & Operations Services — Susan Wakarindi",
+      },
       {
         property: "og:description",
         content:
-          "Retainers and project sprints for inbox, calendar, client care, bookkeeping support and operations systems.",
+          "Retainers and sprints for executive support, operations systems, AI automation and marketing coordination.",
       },
     ],
   }),
@@ -24,21 +27,39 @@ export const Route = createFileRoute("/services")({
 
 const services = [
   {
-    title: "Executive & inbox support",
+    title: "Executive support & virtual assistance",
     items: [
       "Email triage, drafting and follow-up",
       "Calendar management and scheduling",
       "Travel and meeting logistics",
-      "Weekly priority briefings",
+      "Client management and weekly priority briefings",
     ],
   },
   {
-    title: "Client & project operations",
+    title: "Operations & systems",
     items: [
-      "Client onboarding and offboarding flows",
-      "Task boards kept current (Asana, ClickUp, Notion)",
-      "Deadline tracking and gentle chasing",
       "SOP writing and documentation",
+      "Workflow and project management (Asana, ClickUp, Notion)",
+      "Process improvement and delegation planning",
+      "Onboarding and offboarding flows",
+    ],
+  },
+  {
+    title: "AI & automation",
+    items: [
+      "AI-assisted drafting, research and summaries",
+      "No-code automations (Zapier, Make)",
+      "AI-powered workflows for repeat admin",
+      "Tool selection and practical team training",
+    ],
+  },
+  {
+    title: "Marketing & personal branding support",
+    items: [
+      "LinkedIn presence and content scheduling",
+      "Social media coordination from your assets",
+      "Newsletter formatting and distribution",
+      "Brand-consistent Canva design tidy-ups",
     ],
   },
   {
@@ -51,12 +72,12 @@ const services = [
     ],
   },
   {
-    title: "Content & community admin",
+    title: "Documentation & business organisation",
     items: [
-      "Newsletter scheduling and formatting",
-      "Social post scheduling from your assets",
-      "Basic Canva design tidy-ups",
-      "Inbox and DM responses in your voice",
+      "Central knowledge base setup",
+      "File structure and naming standards",
+      "Tracker and dashboard building",
+      "Handover packs your team can actually use",
     ],
   },
 ];
@@ -66,20 +87,20 @@ const packages = [
     name: "Essentials",
     hours: "20 hrs / month",
     price: "from $450",
-    for: "Solo founders who need the inbox and calendar handled.",
+    for: "Founders who need the inbox, calendar and follow-ups handled.",
   },
   {
-    name: "Partner",
+    name: "Operations Partner",
     hours: "40 hrs / month",
     price: "from $850",
-    for: "Growing teams needing client ops plus admin.",
+    for: "Growing teams needing executive support plus running operations.",
     featured: true,
   },
   {
     name: "Systems sprint",
     hours: "2–3 weeks",
     price: "from $600",
-    for: "One-off: document and rebuild a messy workflow.",
+    for: "One-off: document, automate and rebuild a messy workflow.",
   },
 ];
 
@@ -89,20 +110,24 @@ function Services() {
       <section className="grain">
         <div className="mx-auto max-w-6xl px-6 pb-16 pt-20">
           <p className="eyebrow">Services</p>
-          <h1 className="mt-6 max-w-3xl text-4xl leading-[1.08] sm:text-5xl">
-            Support that scales with you — never more process than you need.
+          <h1 className="mt-6 max-w-3xl text-4xl leading-[1.1] sm:text-5xl">
+            Support, structure and smarter ways of working.
           </h1>
+          <p className="mt-6 max-w-xl text-muted-foreground">
+            I don't just manage tasks. I help create the structure that makes work easier
+            to manage and businesses easier to grow.
+          </p>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-6 px-6 py-10 md:grid-cols-2">
+      <section className="mx-auto grid max-w-6xl gap-6 px-6 py-14 md:grid-cols-2">
         {services.map((s) => (
           <div key={s.title} className="rounded-2xl border border-border bg-card p-8">
             <h2 className="text-xl">{s.title}</h2>
             <ul className="mt-5 space-y-3">
               {s.items.map((i) => (
                 <li key={i} className="flex gap-3 text-sm text-muted-foreground">
-                  <Check className="mt-0.5 size-4 shrink-0 text-primary" />
+                  <Check className="mt-0.5 size-4 shrink-0 text-[var(--gold)]" />
                   {i}
                 </li>
               ))}
@@ -119,24 +144,24 @@ function Services() {
               key={p.name}
               className={`rounded-2xl border p-8 ${
                 p.featured
-                  ? "border-primary/60 bg-card"
+                  ? "border-[var(--gold)] bg-card"
                   : "border-border bg-background"
               }`}
             >
               <h3 className="font-display text-2xl">{p.name}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{p.hours}</p>
-              <p className="mt-6 text-xl text-primary">{p.price}</p>
+              <p className="mt-6 text-xl font-semibold text-[var(--gold)]">{p.price}</p>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{p.for}</p>
             </div>
           ))}
         </div>
         <p className="mt-6 text-sm text-muted-foreground">
-          All engagements start with a free 30-minute discovery call and a two-week trial
-          period.
+          Every engagement starts with a free 30-minute discovery call and a two-week
+          trial period.
         </p>
         <Link
           to="/contact"
-          className="mt-8 inline-flex rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-90"
+          className="mt-8 inline-flex rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-[var(--gold)] hover:text-[var(--navy)]"
         >
           Start with a call
         </Link>
