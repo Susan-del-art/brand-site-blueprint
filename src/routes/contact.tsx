@@ -91,10 +91,11 @@ function Contact() {
                   onChange={(e) => setForm({ ...form, need: e.target.value })}
                 >
                   <option value="">Choose one</option>
-                  <option>Inbox &amp; calendar support</option>
-                  <option>Client &amp; project operations</option>
+                  <option>Executive support (inbox, calendar, travel)</option>
+                  <option>Operations, SOPs &amp; project management</option>
+                  <option>AI &amp; automation</option>
+                  <option>Marketing &amp; personal branding support</option>
                   <option>Back office &amp; bookkeeping</option>
-                  <option>Content &amp; community admin</option>
                   <option>Not sure yet</option>
                 </select>
               </label>
@@ -109,7 +110,7 @@ function Contact() {
               </label>
               <button
                 type="submit"
-                className="mt-8 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-90"
+                className="mt-8 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-[var(--gold)] hover:text-[var(--navy)]"
               >
                 Send message
               </button>
@@ -119,20 +120,21 @@ function Contact() {
 
         <aside className="space-y-6 text-sm text-muted-foreground">
           <p className="flex items-start gap-3">
-            <Mail className="mt-0.5 size-4 text-primary" />
-            <a className="hover:text-foreground" href="mailto:hello@susanwakarindi.com">
+            <Mail className="mt-0.5 size-4 text-[var(--gold)]" />
+            <a className="hover:text-primary" href="mailto:hello@susanwakarindi.com">
               hello@susanwakarindi.com
             </a>
           </p>
           <p className="flex items-start gap-3">
-            <MapPin className="mt-0.5 size-4 text-primary" />
+            <MapPin className="mt-0.5 size-4 text-[var(--gold)]" />
             Nairobi, Kenya — working with clients worldwide
           </p>
           <p className="flex items-start gap-3">
-            <Clock className="mt-0.5 size-4 text-primary" />
+            <Clock className="mt-0.5 size-4 text-[var(--gold)]" />
             Mon–Fri, 8am–5pm EAT (UTC+3). Replies within one business day.
           </p>
         </aside>
+
       </section>
     </SiteLayout>
   );
