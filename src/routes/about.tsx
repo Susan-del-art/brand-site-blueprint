@@ -16,42 +16,37 @@ export const Route = createFileRoute("/about")({
         content:
           "Professional, warm and practical support for founders and executives — built on systems, not heroics.",
       },
+      { property: "og:type", content: "profile" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: About,
 });
 
 const values = [
-  ["Excellence", "Don't just complete tasks — deliver work that creates real value."],
+  ["Excellence", "Deliver work that creates real value, not just completed tasks."],
   ["Reliability", "Be someone clients and teams can trust to follow through."],
-  ["Growth", "Continuously learn, adapt and improve with the tools available."],
+  ["Growth", "Keep learning and adapting with the tools available."],
   ["Innovation", "Use technology and AI to make work smarter, not more complicated."],
-  ["Integrity", "Communicate honestly, take responsibility, do the right thing."],
-  ["Collaboration", "Work alongside you — not simply execute instructions."],
+  ["Integrity", "Communicate honestly and take responsibility."],
+  ["Collaboration", "Work alongside you, not simply execute instructions."],
 ];
 
-const tools = [
-  "Google Workspace",
-  "Microsoft 365",
-  "Notion",
-  "Asana",
-  "ClickUp",
-  "Slack",
-  "Trello",
-  "Canva",
-  "Calendly",
-  "QuickBooks",
-  "Zapier / Make",
-  "ChatGPT & AI assistants",
-];
+const toolGroups = [
+  ["Workspace & communication", ["Google Workspace", "Microsoft 365", "Slack"]],
+  ["Projects & documentation", ["Notion", "Asana", "ClickUp", "Trello"]],
+  ["Automation & AI", ["Zapier", "Make", "ChatGPT & AI assistants"]],
+  ["Marketing & finance", ["Canva", "Calendly", "QuickBooks Online"]],
+] as const;
 
 function About() {
   return (
     <SiteLayout>
-      <section className="grain">
-        <div className="mx-auto max-w-6xl px-6 pb-16 pt-20">
+      {/* Narrow editorial header — deliberately different from the split hero on Home */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-3xl px-6 pb-14 pt-20">
           <p className="eyebrow">About</p>
-          <h1 className="mt-6 max-w-3xl text-4xl leading-[1.1] sm:text-5xl">
+          <h1 className="mt-6 text-4xl leading-[1.1] sm:text-5xl">
             From operational chaos to systems that hold.
           </h1>
           <p className="accent-serif mt-5 text-xl text-[var(--navy)]">
@@ -60,8 +55,9 @@ function About() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-12 px-6 py-14 md:grid-cols-[1.4fr_1fr]">
-        <div className="space-y-5 text-lg leading-relaxed text-muted-foreground">
+      {/* Story — long-form, single column for readability */}
+      <section className="mx-auto max-w-3xl px-6 py-16">
+        <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
           <p>
             I'm Susan Wakarindi, an Executive Virtual Assistant and Operations Partner
             working with founders, executives and small businesses. My path has moved with
@@ -77,8 +73,7 @@ function About() {
           <p>
             I also believe professionals shouldn't be afraid to reinvent themselves.
             Alongside client work I share practical lessons with virtual assistants,
-            freelancers and women building digital careers, because proof and teaching
-            beat claims every time.
+            freelancers and women building digital careers.
           </p>
           <p>
             I work in East Africa Time, which overlaps comfortably with European mornings
@@ -86,60 +81,77 @@ function About() {
             never have to chase me for a status.
           </p>
         </div>
+      </section>
 
-        <aside className="space-y-8 rounded-2xl bg-card p-8">
+      {/* Facts strip */}
+      <section className="bg-card">
+        <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-3">
           <div>
             <h2 className="text-sm uppercase tracking-[0.18em] text-[var(--gold)]">
-              Credentials
+              Training &amp; credentials
             </h2>
             <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
               <li>Certified Virtual Assistant — ALX Virtual Assistant Programme</li>
               <li>Google Workspace &amp; project management essentials</li>
               <li>AI tools, prompting &amp; no-code automation practice</li>
               <li>Bookkeeping fundamentals (QuickBooks Online)</li>
-              <li>5+ years remote administrative &amp; operations experience</li>
             </ul>
           </div>
           <div>
             <h2 className="text-sm uppercase tracking-[0.18em] text-[var(--gold)]">
-              Specialties
+              Focus areas
             </h2>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Operations · Executive Support · Marketing · AI · Automation · Digital
-              Systems
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Executive support · Operations &amp; SOPs · Marketing coordination · AI and
+              automation · Back-office and documentation
             </p>
           </div>
           <div>
             <h2 className="text-sm uppercase tracking-[0.18em] text-[var(--gold)]">
-              Languages
+              Working details
             </h2>
-            <p className="mt-4 text-sm text-muted-foreground">English, Kiswahili</p>
+            <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
+              <li>Based in Nairobi, Kenya — remote worldwide</li>
+              <li>East Africa Time (UTC+3), Mon–Fri</li>
+              <li>English &amp; Kiswahili</li>
+            </ul>
           </div>
-        </aside>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-6 py-14">
-        <p className="eyebrow">Core values</p>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {values.map(([title, body]) => (
-            <div key={title} className="rounded-2xl border border-border bg-card p-8">
-              <h2 className="text-xl">{title}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>
-            </div>
-          ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-10">
+      {/* Values — compact numbered list, not six identical cards */}
+      <section className="mx-auto max-w-6xl px-6 py-16">
+        <p className="eyebrow">What I hold myself to</p>
+        <dl className="mt-8 grid gap-x-12 sm:grid-cols-2">
+          {values.map(([title, body], i) => (
+            <div key={title} className="flex gap-5 border-b border-border py-5">
+              <span className="font-display text-sm text-[var(--gold)]">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <dt className="font-display font-semibold text-primary">{title}</dt>
+                <dd className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                  {body}
+                </dd>
+              </div>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      {/* Tools — grouped */}
+      <section className="mx-auto max-w-6xl px-6 pb-20">
         <p className="eyebrow">Tools I work in</p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          {tools.map((t) => (
-            <span
-              key={t}
-              className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground"
-            >
-              {t}
-            </span>
+        <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {toolGroups.map(([group, items]) => (
+            <div key={group}>
+              <h3 className="text-sm font-semibold text-primary">{group}</h3>
+              <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
+                {items.map((t) => (
+                  <li key={t}>{t}</li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
         <Link
