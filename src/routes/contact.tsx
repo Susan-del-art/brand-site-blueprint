@@ -18,10 +18,38 @@ export const Route = createFileRoute("/contact")({
         content:
           "Book a free 30-minute discovery call for executive support, operations systems and AI-powered workflows.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Contact,
 });
+
+const nextSteps = [
+  ["01", "You write", "Send a few lines about the work and where it's getting stuck."],
+  ["02", "I reply", "Within one business day, with a couple of call times that suit your zone."],
+  ["03", "We talk", "Thirty minutes, no pitch — we work out whether I'm the right fit."],
+  ["04", "You decide", "A written proposal with scope, hours and rates. No obligation."],
+];
+
+const faqs = [
+  [
+    "What time zone do you work in?",
+    "East Africa Time (UTC+3), Monday to Friday. That overlaps with European mornings and early US hours, and I agree fixed availability windows with each client.",
+  ],
+  [
+    "How do we start?",
+    "Always with a free 30-minute discovery call, followed by a written proposal. Retainers begin with a two-week settling-in period before we change any process.",
+  ],
+  [
+    "Can you work with my existing tools?",
+    "Yes. I work in Google Workspace, Microsoft 365, Notion, Asana, ClickUp, Trello, Slack, Canva, Calendly, QuickBooks and Zapier or Make. I'd rather improve your setup than replace it.",
+  ],
+  [
+    "Is my information kept confidential?",
+    "Yes. I'm happy to sign an NDA, and access to accounts and documents is handled through your own permission and password tooling.",
+  ],
+];
 
 function Contact() {
   const [sent, setSent] = useState(false);
@@ -32,21 +60,40 @@ function Contact() {
 
   return (
     <SiteLayout>
-      <section className="grain">
-        <div className="mx-auto max-w-6xl px-6 pb-16 pt-20">
-          <p className="eyebrow">Contact</p>
-          <h1 className="mt-6 max-w-3xl text-4xl leading-[1.1] sm:text-5xl">
-            Let's find the hours hiding in your week.
-          </h1>
-          <p className="accent-serif mt-5 text-xl text-[var(--navy)]">
-            Work Smarter. Operate Better. Grow Further.
-          </p>
+      {/* Header + contact facts side by side — no repeated grain hero band */}
+      <section className="border-b border-border bg-card">
+        <div className="mx-auto grid max-w-6xl gap-10 px-6 pb-14 pt-20 md:grid-cols-[1.3fr_1fr] md:items-end">
+          <div>
+            <p className="eyebrow">Contact</p>
+            <h1 className="mt-6 text-4xl leading-[1.1] sm:text-5xl">
+              Let's find the hours hiding in your week.
+            </h1>
+            <p className="accent-serif mt-5 text-xl text-[var(--navy)]">
+              Work Smarter. Operate Better. Grow Further.
+            </p>
+          </div>
+          <div className="space-y-4 text-sm text-muted-foreground">
+            <p className="flex items-start gap-3">
+              <Mail className="mt-0.5 size-4 shrink-0 text-[var(--gold)]" />
+              <a className="hover:text-primary" href="mailto:hello@susanwakarindi.com">
+                hello@susanwakarindi.com
+              </a>
+            </p>
+            <p className="flex items-start gap-3">
+              <MapPin className="mt-0.5 size-4 shrink-0 text-[var(--gold)]" />
+              Nairobi, Kenya — working with clients worldwide
+            </p>
+            <p className="flex items-start gap-3">
+              <Clock className="mt-0.5 size-4 shrink-0 text-[var(--gold)]" />
+              Mon–Fri, 8am–5pm EAT (UTC+3). Replies within one business day.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-12 px-6 py-14 md:grid-cols-[1.3fr_1fr]">
-        <div className="rounded-3xl border border-border bg-card p-8 md:p-10">
-
+      {/* Form + what happens next */}
+      <section className="mx-auto grid max-w-6xl gap-12 px-6 py-16 md:grid-cols-[1.3fr_1fr]">
+        <div className="rounded-3xl border border-border p-8 md:p-10">
           {sent ? (
             <div>
               <h2 className="text-2xl">Thank you, {form.name || "friend"}.</h2>
@@ -62,7 +109,8 @@ function Contact() {
                 setSent(true);
               }}
             >
-              <div className="grid gap-6 sm:grid-cols-2">
+              <h2 className="text-2xl">Send a message</h2>
+              <div className="mt-8 grid gap-6 sm:grid-cols-2">
                 <label className="block text-sm">
                   Your name
                   <input
@@ -118,23 +166,35 @@ function Contact() {
           )}
         </div>
 
-        <aside className="space-y-6 text-sm text-muted-foreground">
-          <p className="flex items-start gap-3">
-            <Mail className="mt-0.5 size-4 text-[var(--gold)]" />
-            <a className="hover:text-primary" href="mailto:hello@susanwakarindi.com">
-              hello@susanwakarindi.com
-            </a>
-          </p>
-          <p className="flex items-start gap-3">
-            <MapPin className="mt-0.5 size-4 text-[var(--gold)]" />
-            Nairobi, Kenya — working with clients worldwide
-          </p>
-          <p className="flex items-start gap-3">
-            <Clock className="mt-0.5 size-4 text-[var(--gold)]" />
-            Mon–Fri, 8am–5pm EAT (UTC+3). Replies within one business day.
-          </p>
+        <aside>
+          <p className="eyebrow">What happens next</p>
+          <ol className="mt-6">
+            {nextSteps.map(([n, title, body]) => (
+              <li key={n} className="flex gap-4 border-b border-border py-5 first:border-t">
+                <span className="font-display text-sm text-[var(--gold)]">{n}</span>
+                <div>
+                  <p className="font-display font-semibold text-primary">{title}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                    {body}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </aside>
+      </section>
 
+      {/* FAQ */}
+      <section className="mx-auto max-w-4xl px-6 pb-20">
+        <p className="eyebrow">Before you ask</p>
+        <dl className="mt-8">
+          {faqs.map(([q, a]) => (
+            <div key={q} className="border-b border-border py-6">
+              <dt className="font-display text-lg font-semibold text-primary">{q}</dt>
+              <dd className="mt-2 leading-relaxed text-muted-foreground">{a}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
     </SiteLayout>
   );
