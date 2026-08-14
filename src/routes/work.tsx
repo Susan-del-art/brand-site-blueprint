@@ -4,48 +4,62 @@ import { SiteLayout } from "@/components/site-layout";
 export const Route = createFileRoute("/work")({
   head: () => ({
     meta: [
-      { title: "Case Studies — Susan Wakarindi, Executive VA & Operations" },
+      { title: "How I Work — Process & Deliverables | Susan Wakarindi" },
       {
         name: "description",
         content:
-          "Real examples: onboarding rebuilds, inbox and calendar systems, automated back-office workflows — with the problem, the system built and the result.",
+          "The four-step process behind every engagement — discovery, absorb, systemise, hand over — and the concrete deliverables you receive along the way.",
       },
-      { property: "og:title", content: "Work & Case Studies — Susan Wakarindi" },
+      { property: "og:title", content: "How I Work — Susan Wakarindi" },
       {
         property: "og:description",
         content:
-          "Systems built for founders and executives, with the numbers behind them. Proof is stronger than claims.",
+          "Discovery, absorb, systemise, hand over: a clear working process and real deliverables, not vague promises.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Work,
 });
 
-const cases = [
+const steps = [
   {
-    client: "Boutique brand studio",
-    title: "Client onboarding rebuilt in two weeks",
-    before: "New clients waited 5+ days for kickoff; details lived in three inboxes.",
-    after:
-      "A single Notion pipeline with templated welcome emails, contracts, SOPs and automated kickoff scheduling.",
-    result: ["Kickoff time 5 days → 24 hrs", "0 missed handovers in 6 months"],
+    n: "01",
+    title: "Discovery",
+    body: "A free 30-minute call to understand the business, where time is leaking and what success would actually look like. You get a written summary of scope, hours and priorities before we commit.",
   },
   {
-    client: "Independent coach",
-    title: "Inbox system and weekly operating rhythm",
-    before: "1,800 unread emails, missed discovery calls, no follow-up on proposals.",
-    after:
-      "Triage labels, AI-assisted saved replies, and a Monday briefing that surfaces only decisions.",
-    result: ["Inbox to zero weekly", "38% more proposals followed up"],
+    n: "02",
+    title: "Absorb",
+    body: "I take the immediate load first — inbox, calendar, follow-ups, whatever is loudest — while observing how the work really flows. Two weeks of settling in before we change anything structural.",
   },
   {
-    client: "SaaS consultancy",
-    title: "Back office automated and documented",
-    before: "Invoices sent late, receipts scattered, no view of unpaid work.",
-    after:
-      "Invoicing calendar, automated receipt filing and a live payments tracker with owner-ready reporting.",
-    result: ["Average payment 46 → 21 days", "8 hrs/month saved for the founder"],
+    n: "03",
+    title: "Systemise",
+    body: "The recurring work becomes a system: triage rules, SOPs, templates, trackers and automation where it earns its place. The goal is that the task stops needing a hero to complete it.",
   },
+  {
+    n: "04",
+    title: "Hand over & maintain",
+    body: "Everything is documented in one place your team can reach. Weekly priority briefings and end-of-week summaries keep you informed without needing to ask for status.",
+  },
+];
+
+const deliverables = [
+  ["Standard operating procedures", "Step-by-step documents anyone on the team can follow."],
+  ["Workflow boards", "Asana, ClickUp, Notion or Trello set up to match how you actually work."],
+  ["Inbox & calendar system", "Triage labels, saved replies, scheduling rules and meeting hygiene."],
+  ["Trackers & dashboards", "Live views of invoices, clients, content or projects."],
+  ["Automations", "Zapier or Make flows that remove copy-paste work between tools."],
+  ["Knowledge base", "One organised home for files, templates and process docs."],
+];
+
+const rhythm = [
+  ["Monday", "Priority briefing: what matters this week, what needs your decision."],
+  ["Daily", "Inbox and calendar handled; anything urgent flagged, not buried."],
+  ["Friday", "End-of-week summary: what moved, what's blocked, what's next."],
+  ["Monthly", "A short review of hours, what got systemised and what to improve."],
 ];
 
 function Work() {
@@ -53,56 +67,79 @@ function Work() {
     <SiteLayout>
       <section className="grain">
         <div className="mx-auto max-w-6xl px-6 pb-16 pt-20">
-          <p className="eyebrow">Selected work</p>
+          <p className="eyebrow">How I work</p>
           <h1 className="mt-6 max-w-3xl text-4xl leading-[1.1] sm:text-5xl">
-            Proof is stronger than claims.
+            A clear process beats a long list of promises.
           </h1>
-          <p className="mt-6 max-w-xl text-muted-foreground">
-            Operations work rarely photographs well — so here's the problem, the system
-            built, and the result. Client names withheld for confidentiality.
+          <p className="mt-6 max-w-xl text-lg text-muted-foreground">
+            Operations work rarely photographs well, so here is the honest version: the
+            process I follow, what you receive, and the rhythm you can expect week to
+            week.
           </p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl space-y-6 px-6 py-14">
-        {cases.map((c) => (
-          <article
-            key={c.title}
-            className="grid gap-8 rounded-3xl border border-border bg-card p-8 md:grid-cols-[1fr_1.2fr] md:p-12"
-          >
-            <div>
-              <p className="eyebrow">{c.client}</p>
-              <h2 className="mt-4 text-2xl leading-snug">{c.title}</h2>
-              <ul className="rule-gold mt-6 space-y-2 pt-5">
-                {c.result.map((r) => (
-                  <li key={r} className="text-sm font-semibold text-primary">
-                    {r}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="space-y-6 text-sm leading-relaxed text-muted-foreground">
-              <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-[var(--gold)]">
-                  The problem
-                </p>
-                <p className="mt-2">{c.before}</p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-[var(--gold)]">
-                  The system
-                </p>
-                <p className="mt-2">{c.after}</p>
-              </div>
-            </div>
-          </article>
-        ))}
+      {/* Process — vertical timeline, unique layout on the site */}
+      <section className="mx-auto max-w-4xl px-6 py-16">
+        <ol className="border-l border-border">
+          {steps.map((s) => (
+            <li key={s.n} className="relative pb-12 pl-8 last:pb-0">
+              <span className="absolute -left-[5px] top-2 size-[9px] rounded-full bg-[var(--gold)]" />
+              <p className="font-display text-sm text-[var(--gold)]">{s.n}</p>
+              <h2 className="mt-2 text-2xl">{s.title}</h2>
+              <p className="mt-3 leading-relaxed text-muted-foreground">{s.body}</p>
+            </li>
+          ))}
+        </ol>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-10">
+      {/* Deliverables */}
+      <section className="bg-card">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <p className="eyebrow">What you actually receive</p>
+          <h2 className="mt-4 max-w-2xl text-3xl leading-snug">
+            Tangible artefacts you keep, whether we work together for a month or a year.
+          </h2>
+          <dl className="mt-10 grid gap-x-12 sm:grid-cols-2">
+            {deliverables.map(([title, body]) => (
+              <div key={title} className="border-b border-border py-5">
+                <dt className="font-display font-semibold text-primary">{title}</dt>
+                <dd className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                  {body}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      {/* Communication rhythm */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="grid gap-12 md:grid-cols-[1fr_1.3fr]">
+          <div>
+            <p className="eyebrow">Communication rhythm</p>
+            <h2 className="mt-4 text-3xl leading-snug">
+              You should never have to chase me for a status.
+            </h2>
+          </div>
+          <div>
+            {rhythm.map(([when, what]) => (
+              <div
+                key={when}
+                className="grid grid-cols-[7rem_1fr] gap-4 border-b border-border py-5 first:border-t"
+              >
+                <span className="text-xs uppercase tracking-[0.18em] text-[var(--gold)]">
+                  {when}
+                </span>
+                <span className="text-sm text-muted-foreground">{what}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <Link
           to="/contact"
-          className="inline-flex rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-[var(--gold)] hover:text-[var(--navy)]"
+          className="mt-12 inline-flex rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-[var(--gold)] hover:text-[var(--navy)]"
         >
           Tell me about your bottleneck
         </Link>
