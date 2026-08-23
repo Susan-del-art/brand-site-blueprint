@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
+import working from "@/assets/susan-working.jpg.asset.json";
 
 export const Route = createFileRoute("/work")({
   head: () => ({
@@ -66,16 +67,24 @@ function Work() {
   return (
     <SiteLayout>
       <section className="grain">
-        <div className="mx-auto max-w-6xl px-6 pb-16 pt-20">
-          <p className="eyebrow">How I work</p>
-          <h1 className="mt-6 max-w-3xl text-4xl leading-[1.1] sm:text-5xl">
-            A clear process beats a long list of promises.
-          </h1>
-          <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-            Operations work rarely photographs well, so here is the honest version: the
-            process I follow, what you receive, and the rhythm you can expect week to
-            week.
-          </p>
+        <div className="mx-auto grid max-w-6xl gap-10 px-6 pb-16 pt-20 md:grid-cols-[1.1fr_1fr] md:items-center">
+          <div>
+            <p className="eyebrow">How I work</p>
+            <h1 className="mt-6 max-w-3xl text-4xl leading-[1.1] sm:text-5xl">
+              A clear process beats a long list of promises.
+            </h1>
+            <p className="mt-6 max-w-xl text-lg text-muted-foreground">
+              Here is the honest version: the process I follow, what you receive, and the
+              rhythm you can expect week to week.
+            </p>
+          </div>
+          <img
+            src={working.url}
+            alt="Susan Wakarindi working at a laptop"
+            width={1080}
+            height={875}
+            className="aspect-[5/4] w-full rounded-3xl object-cover"
+          />
         </div>
       </section>
 
