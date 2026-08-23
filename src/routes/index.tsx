@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { ArrowRight, Bot, CalendarCheck, Megaphone, Workflow } from "lucide-react";
+import portrait from "@/assets/susan-portrait.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -98,6 +99,13 @@ function Home() {
           </div>
 
           <div className="rule-gold pt-6 md:pb-2">
+            <img
+              src={portrait.url}
+              alt="Susan Wakarindi, Executive Virtual Assistant and Operations Partner"
+              width={800}
+              height={1200}
+              className="mb-8 aspect-[4/5] w-full rounded-3xl object-cover object-top"
+            />
             <p className="text-lg leading-relaxed text-muted-foreground">
               I'm Susan Wakarindi — an Executive Virtual Assistant and Operations Partner.
               I help founders, executives and growing businesses move from operational
