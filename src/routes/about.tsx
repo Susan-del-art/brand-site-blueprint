@@ -1,5 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
+import seated from "@/assets/susan-seated.jpg.asset.json";
+import presenting from "@/assets/susan-presenting.jpg.asset.json";
+import office from "@/assets/susan-office.jpg.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -57,6 +60,15 @@ function About() {
 
       {/* Story — long-form, single column for readability */}
       <section className="mx-auto max-w-3xl px-6 py-16">
+        <figure className="mb-12">
+          <img
+            src={seated.url}
+            alt="Susan Wakarindi seated, in a navy suit"
+            width={800}
+            height={1200}
+            className="aspect-[4/5] w-full rounded-3xl object-cover object-top"
+          />
+        </figure>
         <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
           <p>
             I'm Susan Wakarindi, an Executive Virtual Assistant and Operations Partner
@@ -80,6 +92,22 @@ function About() {
             and early US hours, and I communicate in short, predictable updates so you
             never have to chase me for a status.
           </p>
+        </div>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          <img
+            src={presenting.url}
+            alt="Susan Wakarindi presenting at a workshop"
+            width={675}
+            height={1200}
+            className="aspect-[3/4] w-full rounded-2xl object-cover"
+          />
+          <img
+            src={office.url}
+            alt="Susan Wakarindi at her desk chair in an office setting"
+            width={800}
+            height={1200}
+            className="aspect-[3/4] w-full rounded-2xl object-cover"
+          />
         </div>
       </section>
 
