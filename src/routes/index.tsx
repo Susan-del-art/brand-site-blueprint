@@ -69,44 +69,47 @@ function Home() {
     <SiteLayout>
       {/* Hero — split, statement-led */}
       <section className="grain">
-        <div className="mx-auto grid max-w-6xl gap-12 px-6 pb-24 pt-20 md:grid-cols-[1.35fr_1fr] md:items-end md:pt-28">
-          <div>
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-6 pb-24 pt-12 md:grid-cols-[1.35fr_1fr] md:grid-rows-[auto_auto] md:items-end md:gap-x-12 md:pt-28">
+          <div className="rule-gold order-1 pt-6 md:order-none md:col-start-2 md:row-start-1 md:pt-6">
+            <img
+              src={portrait.url}
+              alt="Susan Wakarindi, Executive Virtual Assistant and Operations Partner"
+              width={800}
+              height={1200}
+              className="aspect-[4/5] w-full rounded-3xl object-cover object-top"
+            />
+          </div>
+
+          <div className="order-2 md:order-none md:col-start-1 md:row-span-2 md:row-start-1">
             <p className="eyebrow">
               Executive Virtual Assistant · Operations · Marketing · AI Systems
             </p>
-            <h1 className="mt-6 text-4xl leading-[1.06] sm:text-6xl">
+            <h1 className="mt-6 text-3xl leading-[1.08] sm:text-5xl lg:text-6xl">
               Don't just work harder.
               <br />
               Build better systems.
             </h1>
-            <p className="accent-serif mt-5 text-xl text-[var(--navy)]">
+            <p className="accent-serif mt-5 text-lg text-[var(--navy)] sm:text-xl">
               Structure creates freedom.
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-[var(--gold)] hover:text-[var(--navy)]"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-[var(--gold)] hover:text-[var(--navy)]"
               >
                 Book a discovery call <ArrowRight className="size-4" />
               </Link>
               <Link
                 to="/services"
-                className="inline-flex items-center gap-2 rounded-full border border-[var(--navy)]/25 px-6 py-3 text-sm font-medium text-primary transition-colors hover:bg-background"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-[var(--navy)]/25 px-6 py-3 text-sm font-medium text-primary transition-colors hover:bg-background"
               >
                 See how I work
               </Link>
             </div>
           </div>
 
-          <div className="rule-gold pt-6 md:pb-2">
-            <img
-              src={portrait.url}
-              alt="Susan Wakarindi, Executive Virtual Assistant and Operations Partner"
-              width={800}
-              height={1200}
-              className="mb-8 aspect-[4/5] w-full rounded-3xl object-cover object-top"
-            />
-            <p className="text-lg leading-relaxed text-muted-foreground">
+          <div className="order-3 md:order-none md:col-start-2 md:row-start-2 md:pb-2">
+            <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
               I'm Susan Wakarindi — an Executive Virtual Assistant and Operations Partner.
               I help founders, executives and growing businesses move from operational
               chaos to organised, efficient, scalable ways of working.
@@ -120,6 +123,7 @@ function Home() {
           </div>
         </div>
       </section>
+
 
       {/* Problem framing — list, not cards */}
       <section className="mx-auto max-w-6xl px-6 py-20">

@@ -26,12 +26,12 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-8 md:flex">
+          <nav className="hidden items-center gap-5 lg:flex xl:gap-8">
             {nav.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary [&.active]:text-primary"
+                className="whitespace-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-primary [&.active]:text-primary"
                 activeOptions={{ exact: item.to === "/" }}
               >
                 {item.label}
@@ -39,23 +39,25 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             ))}
             <Link
               to="/contact"
-              className="rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-[var(--gold)] hover:text-[var(--navy)]"
+              className="whitespace-nowrap rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-[var(--gold)] hover:text-[var(--navy)]"
             >
               Book a call
             </Link>
           </nav>
 
           <button
-            className="text-primary md:hidden"
+            className="shrink-0 text-primary lg:hidden"
             aria-label="Toggle menu"
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
+
         </div>
 
         {open && (
-          <nav className="border-t border-border px-6 py-4 md:hidden">
+          <nav className="border-t border-border px-6 py-4 lg:hidden">
+
             {nav.map((item) => (
               <Link
                 key={item.to}

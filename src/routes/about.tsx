@@ -47,29 +47,32 @@ function About() {
     <SiteLayout>
       {/* Narrow editorial header — deliberately different from the split hero on Home */}
       <section className="border-b border-border">
-        <div className="mx-auto max-w-3xl px-6 pb-14 pt-20">
-          <p className="eyebrow">About</p>
-          <h1 className="mt-6 text-4xl leading-[1.1] sm:text-5xl">
-            From operational chaos to systems that hold.
-          </h1>
-          <p className="accent-serif mt-5 text-xl text-[var(--navy)]">
-            Behind every well-organised executive is a system that works.
-          </p>
+        <div className="mx-auto flex max-w-3xl flex-col px-6 pb-14 pt-10 md:pt-20">
+          <figure className="order-1 mb-10 md:order-2 md:mb-0 md:mt-12">
+            <img
+              src={seated.url}
+              alt="Susan Wakarindi seated, in a navy suit"
+              width={800}
+              height={1200}
+              className="aspect-[4/5] w-full rounded-3xl object-cover object-top"
+            />
+          </figure>
+          <div className="order-2 md:order-1">
+            <p className="eyebrow">About</p>
+            <h1 className="mt-6 text-3xl leading-[1.1] sm:text-5xl">
+              From operational chaos to systems that hold.
+            </h1>
+            <p className="accent-serif mt-5 text-lg text-[var(--navy)] sm:text-xl">
+              Behind every well-organised executive is a system that works.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Story — long-form, single column for readability */}
       <section className="mx-auto max-w-3xl px-6 py-16">
-        <figure className="mb-12">
-          <img
-            src={seated.url}
-            alt="Susan Wakarindi seated, in a navy suit"
-            width={800}
-            height={1200}
-            className="aspect-[4/5] w-full rounded-3xl object-cover object-top"
-          />
-        </figure>
         <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+
           <p>
             I'm Susan Wakarindi, an Executive Virtual Assistant and Operations Partner
             working with founders, executives and small businesses. My path has moved with
