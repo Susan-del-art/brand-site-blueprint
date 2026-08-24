@@ -56,7 +56,8 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         </div>
 
         {open && (
-          <nav className="border-t border-border px-6 py-4 md:hidden">
+          <nav className="border-t border-border px-6 py-4 lg:hidden">
+
             {nav.map((item) => (
               <Link
                 key={item.to}
