@@ -190,7 +190,6 @@ function Services() {
                 className={`flex flex-col rounded-2xl border bg-background p-8 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--gold)] hover:shadow-lg ${
                   e.featured ? "border-[var(--gold)]" : "border-border"
                 }`}
-
               >
                 <h3 className="font-display text-xl">{e.name}</h3>
                 <p className="mt-1 text-xs uppercase tracking-[0.14em] text-[var(--gold)]">
