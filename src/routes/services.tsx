@@ -150,16 +150,23 @@ function Services() {
         {services.map((s) => (
           <div
             key={s.title}
-            className="grid gap-6 border-b border-border py-10 md:grid-cols-[auto_1fr_1fr] md:gap-12"
+            className="group grid gap-6 rounded-2xl border-b border-border px-2 py-10 transition-colors duration-300 hover:bg-card md:grid-cols-[auto_1fr_1fr] md:gap-12 md:px-6"
           >
-            <span className="font-display text-sm text-[var(--gold)]">{s.n}</span>
+            <span className="font-display text-sm text-[var(--gold)] transition-transform duration-300 group-hover:-translate-y-0.5">
+              {s.n}
+            </span>
             <div>
-              <h2 className="text-2xl leading-snug">{s.title}</h2>
+              <h2 className="text-2xl leading-snug transition-colors group-hover:text-[var(--gold)]">
+                {s.title}
+              </h2>
               <p className="mt-3 text-sm text-muted-foreground">{s.intro}</p>
             </div>
             <ul className="space-y-2 text-sm text-muted-foreground">
               {s.items.map((i) => (
-                <li key={i} className="border-l-2 border-[var(--gold)]/40 pl-4">
+                <li
+                  key={i}
+                  className="border-l-2 border-[var(--gold)]/40 pl-4 transition-colors hover:border-[var(--gold)] hover:text-foreground"
+                >
                   {i}
                 </li>
               ))}
@@ -167,6 +174,7 @@ function Services() {
           </div>
         ))}
       </section>
+
 
       {/* Engagement models */}
       <section className="bg-card">
