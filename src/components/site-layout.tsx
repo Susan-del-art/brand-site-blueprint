@@ -40,7 +40,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             <span className="font-display text-lg font-semibold tracking-tight text-primary">
               Susan Wakarindi
             </span>
-            <span className="hidden text-[0.62rem] uppercase tracking-[0.18em] text-muted-foreground sm:block">
+            <span className="hidden text-[0.55rem] uppercase tracking-[0.16em] text-muted-foreground sm:block">
               Executive VA · Operations · Marketing · AI Systems
             </span>
           </Link>
