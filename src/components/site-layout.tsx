@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Menu, X } from "lucide-react";
 
 const nav = [
@@ -12,6 +12,25 @@ const nav = [
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -46,32 +65,62 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           </nav>
 
           <button
-            className="shrink-0 text-primary lg:hidden"
-            aria-label="Toggle menu"
+            className="shrink-0 rounded-md p-2 text-primary transition-colors hover:bg-[var(--beige)] lg:hidden"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
-
         </div>
-
-        {open && (
-          <nav className="border-t border-border px-6 py-4 lg:hidden">
-
-            {nav.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                onClick={() => setOpen(false)}
-                className="block py-2 text-sm text-muted-foreground hover:text-primary [&.active]:text-primary"
-                activeOptions={{ exact: item.to === "/" }}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        )}
       </header>
+
+      {/* Off-canvas mobile menu */}
+      <div
+        id="mobile-menu"
+        className={`fixed inset-0 z-40 lg:hidden ${open ? "pointer-events-auto" : "pointer-events-none"}`}
+        aria-hidden={!open}
+      >
+        {/* Backdrop */}
+        <div
+          className={`absolute inset-0 bg-[var(--navy)]/40 transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"}`}
+          onClick={() => setOpen(false)}
+        />
+
+        {/* Panel */}
+        <div
+          className={`absolute right-0 top-0 h-full w-[min(80vw,18rem)] transform bg-background shadow-2xl transition-transform duration-300 ease-out ${
+            open ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <div className="flex h-full flex-col px-6 py-5 pt-20">
+            <nav className="flex flex-col gap-1">
+              {nav.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  onClick={() => setOpen(false)}
+                  className="rounded-lg px-3 py-3 text-base font-medium text-muted-foreground transition-colors hover:bg-[var(--beige)] hover:text-primary [&.active]:bg-[var(--beige)] [&.active]:text-primary"
+                  activeOptions={{ exact: item.to === "/" }}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
+            <div className="mt-6 border-t border-border pt-6">
+              <Link
+                to="/contact"
+                onClick={() => setOpen(false)}
+                className="block rounded-full bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground transition-colors hover:bg-[var(--gold)] hover:text-[var(--navy)]"
+              >
+                Book a call
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <main>{children}</main>
 
