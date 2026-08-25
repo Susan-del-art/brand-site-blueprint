@@ -45,7 +45,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-5 lg:flex xl:gap-8">
+          <nav className="hidden items-center gap-3 md:flex lg:gap-5 xl:gap-8">
             {nav.map((item) => (
               <Link
                 key={item.to}
@@ -65,7 +65,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           </nav>
 
           <button
-            className="shrink-0 rounded-md p-2 text-primary transition-colors hover:bg-[var(--beige)] lg:hidden"
+            className="shrink-0 rounded-md p-2 text-primary transition-colors hover:bg-[var(--beige)] md:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -79,7 +79,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       {/* Off-canvas mobile menu */}
       <div
         id="mobile-menu"
-        className={`fixed inset-0 z-40 lg:hidden ${open ? "pointer-events-auto" : "pointer-events-none"}`}
+        className={`fixed inset-0 z-40 md:hidden ${open ? "pointer-events-auto" : "pointer-events-none"}`}
         aria-hidden={!open}
       >
         {/* Backdrop */}
